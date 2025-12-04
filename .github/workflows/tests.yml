@@ -35,7 +35,7 @@ jobs:
           set -e
           echo "== Test add 10 5 ==" > report.txt
           ./src/calculator add 10 5 | tee -a report.txt
-          echo "Exit code: $?" >> report.txt
+          echo "Exit code: ${PIPESTATUS[0]}" >> report.txt
 
       - name: Upload report as artifact
         uses: actions/upload-artifact@v4
