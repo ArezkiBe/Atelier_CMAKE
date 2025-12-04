@@ -32,10 +32,11 @@ jobs:
       - name: Run test "add" and capture report
         run: |
           cd build
-          set -e
           echo "== Test add 10 5 ==" > report.txt
           ./src/calculator add 10 5 | tee -a report.txt
-          echo "Exit code: ${PIPESTATUS[0]}" >> report.txt
+          EXIT_CODE=${PIPESTATUS[0]}
+          echo "Exit code: $EXIT_CODE" >> report.txt
+          exit $EXIT_CODE
 
       - name: Upload report as artifact
         uses: actions/upload-artifact@v4
